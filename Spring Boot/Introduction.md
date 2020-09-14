@@ -1,4 +1,4 @@
-#### Introducing Spring Boot
+# Introducing Spring Boot
  
 For example, a food ordering application which supports in ordering online have to use a frontend UI, backend (server-side programming), and a database to persist data.
 
