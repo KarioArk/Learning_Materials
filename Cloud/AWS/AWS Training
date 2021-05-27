@@ -1,0 +1,507 @@
+AWS Training 
+
+17 - July - 2020 - 1st Session
+1. Introduction to AWS
+    1. 2006 - born - 
+    2. Global Infrastructure 
+        1. AWS region - 24 Regions - Clustered of data center -called as AZ - minimum of 3 AZ
+        2. Availability Zone(AZ) - cache locations also available
+            1. AZ will be kept in less than 100 km and will reduce the redundant code
+        3. Cloud front - Content Delivery 
+    3. Global Network & Direct connect
+
+AWS Compute Services
+    1. Containerization - ECS and EKS - underline EC2 machine
+    2. Serverless 
+        1. Lambda 
+        2. AWS Fargate
+    3. Strangler Pattern - Monolith to Micro Services
+1. Amazon EC2
+    1. Linux and Windows
+    2. VM -> Typical VM and will have a Hypervisor
+        1. Xen Based
+        2. AWS Nitro Hypervisor - custom based KVM Hypervisor
+        3. Bare Metal
+    3. AWS Account
+    4. AWS DC - Region select
+    5. OS - Amazon Machine Image
+    6. CPU/RAM - Instance Types
+    7. Storage - Elastic Block Storage(EBS) - Amazon S3 - Every instance will have EBS for storing and instances are stored in S3 which is on AMI.
+        1. EBS Volume - Attach more storage - block Storage as a service
+            1. EBS Snapshot - This is stored in S3 
+    8. Network - VPC/ Subnets - VPC is your private network on top of your AZ - 
+        1. Firewall - Manage port with security group - Every instance has Security group with port 22  - allow only my IP
+    9. Login Credentials
+    10. EC2 Instance Types
+        1. Instance Family
+        2. Instance Generation - run for new generation instances 
+        3. Attribute
+        4. Instance Size
+    11. How EC2 gets IP address
+        1. Subnet
+            1. Also has Auto Public IP - This changes if instances restarts so at that time use Elastic IP
+            2. Private IP from Subnet CIDR range
+            3. Elastic IP - Static Public IP - 
+            4. Can be remapped from 1 instance to another instance - This can be managed better way by DNS
+    12. How to secure Network Access
+    13. EC2 Image Builder
+    14. EC2 UserData - It boots up when ever instance is started - here you can add what ever you want
+    15. EC2 - S3 - How it talks is based on IAM role - this will grant permission to S3 bucket read access
+    16. Instance Metadata
+2. ECS
+3. Fragate
+4. Lambda
+
+====================================================================================================================================================
+
+24 - July - 2020 - 1st Session
+1. Continuation- how do I scale my EC2 instance
+    1. Option 1
+    2. Option 2 - Horizontal Scaling - Load Balancer - Elastic Load Balancer  - Auto Scaling Group
+        1. Application Load Balancer - Layer 7 - HTTP/HTTPS
+        2. Network Load Balancer - Layer 4 - TCP/FTP/UDP
+        3. Auto Scaling Group(ASG) -> Amazon Cloud Watch - Metrics will be taken -> Trigger alarm to ASG -> ASG Will add instance
+2. AWS Compute Optimizer
+
+1. Storage
+    1. Storage Primer - Protocols are there for all type (Look into it) EBS - EFS - S3
+        1. Block Storage - RAW Storage - Eg: SAN, Harddisk ,Storage Arrays - Fast
+            1. SSD - Solid State Drive
+                1. Provisioned IOPS SSD - io1
+                2. General Purpose SSD - GP2
+            2. HDD - 
+                1. Throughput Optimised
+                2. Cold Storage
+            3. Elastic Block Storage - Stored in AZ and if instance goes down - You can’t get it or recover the data - In order to overcome - Put it in S3 by using EBS Snapshot service
+                1. EC2 Instance Store 
+                    1. Data is lost when we reboot
+                    2. No snapshot
+                    3. Free
+        2. File Storage - Eg: NAS, Windows File Servers - Shared Storage System
+            1. Elastic File System - EFS
+                1. Multiple EC2 instances can connect to EFS
+                2. Mount on machine and access it
+                3. Use cases
+                    1. Big Data Analytics
+                    2. Media workflow processing
+                    3. Web Serving
+                    4. Content Management
+                    5. Home Directories
+                4. 2 Types of access
+                    1. Standard
+                    2. (IFA) Infrequent access
+            2. FSx
+                1. Windows
+                2. Lustre - File System
+                    1. Open source
+                    2. High Performance - used widely for more faster
+        3. Object Storage Eg: Ceph, Openstack Swift - API Access of data - Meta driven - Policy based - like Google Drive
+            1. S3 - Simple Storage Service
+                1. 11 9s
+                    1. Replicated across the 3 AZs
+                    2. It allows 1 AZ - Cost reduce
+                2. Through API or HTTPS
+                3. Security features
+                4. Bucket - Put data in the bucket
+                    1. Name of the bucket - Object/key
+            2. Storage classes
+                1. Frequent
+                2. Infrequent
+                3. Access Frequency
+            3. Lifecycle policy
+            4. S3 Intelligent Tiering feature - AI one - Moves
+            5. Cross region replication
+            6. S3 Security
+                1. Object to be public - but before doing this allow blocking should be unchecked
+                2. Presign URL
+    2. Char
+        1. Durability
+            1. Two Copies of one site - 99.99 %
+            2. Two Copies but across the different sites - 99.999% (5 9’s)- One site - means one AZ - 2 AZs
+            3. Data in 3 Sites - (11 9’s) - means 3 AZs
+        2. Secure
+        3. Compromised
+        4. Cost
+        5. Scale
+        6. Performance - Object Storage is best but Latency will be less
+        7. Availability 
+        8. Integration - Accessing
+
+====================================================================================================================================================
+
+31 - July - 2020 - 1st Session
+	
+      Networking in AWS
+    1. AWS Global Network
+        1. 24 Regions - 77 AZs and 1 Local Region
+        2. Global Network
+        3. Direct Connect - 97 Locations
+            1. AWS Direct Connect POP
+            2. Customer or Partner cage
+        4. Point of Presence - 216
+    2. Amazon VPC - Virtual Private Cloud - Own Network (IP Addresses, Subnets, Network Topology, Routing Routes, Security rules)
+        1. How it looks
+            1. AWS Cloud - Inside
+                1. VPC - These are few inside services 
+                    1. Amazon EC2
+                    2. AWS Lambda
+                    3. Amazon RDS
+                    4. Amazon Redshift - Dataware housing services
+                2. Amazon DynamoDB
+                3. Amazon Simple Storage Service - S3
+            2. Choosing an IP Addresses
+                1. VPC CIDR(classless inter domain routing) - 10.0.0.0/16 - It means 16 is for VPC - App sized CIDR (example/16 = 65536 IP Addresses) How this number?
+            3. Subnets
+                1. Every VPC will multiple Subnets and it will be inside AZ
+                2. Example
+                    1. 10.0.0.0/24 - 256 IP Addresses
+                    2. 10.0.1.0/24
+                    3. 10.0.2.0/24
+                    4. 10.0.0.0/28 - 16 IP Addresses
+                3. Note: AWS reserves 5 IP Addresses - first 4 and last one
+            4. How to segment networks inside a VPC
+                1. Private IP and Public IP
+            5. Route traffic inside VPC
+                1. Router is created automatically between AZs
+                2. Every VPC comes with Main route table 
+                3. You can also have route table for subnet and don’t want to use main route table
+                4. Internet Gateway - 
+                    1. EC2 can now talk to internet if we add this  and 
+                    2. also route to 0.0.0.0/0 and 
+                    3. also you need to add public or elastic IP - Dynamically is created - Static Public IP called Elastic IP
+                5. NAT Gateway - outbound internet connections to Private EC2 Instance
+            6. Security
+                1. NACL - Network access control list
+                    1. Subnet level
+                    2. Stateless
+                    3. Deny all the 
+                2. Security group
+            7. VPC Endpoint Gateway
+                1. To talk with Amazon services which is outside in VPC
+                2. Add a route
+            8. VPC Peering
+                1. Connecting to another VPC
+                2. Transit Gateway  - Centralized VPN connection - Instead of having VPN Peering we can have this 
+        2. VPCBuilding Blocks
+            1. VPC
+        3. Connectivity options
+        4. Connect your Data Center to AWS
+            1. IPsec Tunnel
+            2. Virtual Private Gateway
+            3. Customer Gateway
+
+====================================================================================================================================================
+
+07 - Aug - 2020 - 1st Session
+
+Databases on AWS
+    1. AWS Database services
+    2. Traditional vs AWS Data Services model
+    3. Amazon RDS - App Optimization alone you need to take care
+        1. All SQL comes under RDS
+        2. Amazon Auora
+            1. Database Backtrack
+            2. Amazon owned
+            3. Performance and latency better than MySQL and PostgreSQL
+            4. Multi Master
+                1. Simultaneously read and write
+            5. Global Database
+            6. Serverless
+                1. On demand
+                2. Auto Scaling database for applications
+        3. MySQL
+        4. PostgreSQL
+        5. MariaDB
+        6. Microsoft SQL Server
+        7. Oracle
+        8. Features - Configurations
+            1. Push Button Scaling
+            2. Read Replicas - Read & Master(Write) - Read can be in any region
+                1. This is not synchronous 
+                2. Not supported by all databases
+            3. Provisioned IOPS
+            4. Multi AZ RDS
+                1. Master DB
+                2. Standby DB
+                3. These two are synchronous 
+                4. Should be less than 10 ms so the other than DB should be in the same region but it is possible across other AZs
+    4. Amazon DynamoDB
+        1. Non Relational or No SQL
+            1. No strict schemas - Data can grow and returns faster 
+        2. Seamless Scalability
+        3. Zero Admin
+        4. Multi Master
+        5. Multi Region
+        6. Single digit millisecond latency
+        7. Cost Effective
+        8. Integrated with AWS Lambda & RedShift and more
+        9. Global Tables
+    5. ElastiCache
+        1. Memcached
+        2. Redis
+    6. Neptune
+        1. W3C RD graph
+        2. Open
+        3. Mobile
+    7. Amazon Timestream
+        1. IOT
+    8. QLDB
+        1. Immutable Transactions - Banking
+    9. DocumentDB
+        1. MongoDB
+        2. Content Mangement
+1. Common Data Categories
+    1. Relational -CRM, finance - RDS
+    2. Key-Value - Social, Shopping cart, Real time Bidding - DynamoDB
+    3. Document - Content Management -DocumentDB
+    4. In-memory - Caching, Leaderboard, real time analytics -ElasticCache(Redis & Memcached)
+    5. Graph - Social Networking, Recommendation - Neptune
+    6. Time-series - Iot Applications - Timestream
+    7. Ledger - Blockchain - QLDB
+    8. Warehouse -  Analytics, Data Marts - Redshift
+====================================================================================================================================================
+
+14 - Aug - 2020 - 1st Session
+
+1. IAM - AWS Identity and Access Management
+    1. Overview of security in AWS
+    2. What is IAM
+    3. 
+    4. Multi Account IAM
+        1. Master Account  in Organisation
+            1. Child accounts in Organisation Units
+        2. Enable Single Sign on
+        3. ADFS
+        4. Third Party Integrations
+    5. Encryption
+        1. KMS - 
+            1. Policy needs to have this
+    6. AWS Resource beyond AWS Account
+        1. Resource Based Policy - 
+            1. Say someone from outside your org wants access 
+            2. Then we should create mutual policy in both sides 
+            3. but this is not supported in all services
+            4. In order to work for all services which doesn’t supports resource based policy - then create roles and manage access 
+2. Security before 
+    1. 
+3. Security Cloud
+4. Types
+    1. IAM
+            1. Securely control access to AWS Services and Resources
+            2. Email ID is root user
+            3. AWS Authenticate to IAM
+                1. Access Key
+                2. Secret Key
+                3. CLI or SDN - You can access AWS IAM
+            4. You can create AWS group
+            5. IAM Policy
+                1. Assigned to Users
+                2. Assigned to Groups
+                3. IAM Roles
+                    1. Assumed to AWS Services
+                    2. Assumed to Users
+
+    1. Detection
+    2. Infrastructure Protection - Some attacks 
+    3. Data Protection
+    4. Incident Response - DR
+1. GuardRails for IAM
+    1. Organisations service control policies. - SCP
+        1. Applies to all organisations
+
+====================================================================================================================================================
+
+22 - Sep - 2020 - 1st Session
+ Building Modern Application on AWS - Premal Gandhi 
+
+Application Modernization - Suman
+1. Overview
+    1. Changing 
+2. Area of Focus 
+    1. Break up - Monolith to Micro
+    2. Invest in your workforce
+    3. Automate your bureaucracy 
+    4. Build it in - Don’t bolt it in
+3. Changes to be made
+    1. Architectural Patterns
+        1. Shrink the scope - 
+        2. Event Driven Architecture
+            1. Observable events
+            2. Auditing 
+            3. Decoupled and distributed
+            4. Pay for value
+            5. Decrease of waste
+    2. Operational Model
+        1. Off load the undifferentiated pieces
+        2. Complexity
+    3. APIs are the front door of microservices
+        1. APIs Governance is extremely important
+    4. Focus more on business logic
+    5. Level of Abstraction
+    6. Data Management
+        1. Data becomes part of each microservice
+        2. Own database for microservice
+    7. Delivery of software
+        1. Automate everything
+        2. CI
+        3. CD - Till Production or Testing environment
+4. AWS Lambda - Serverless Functions
+    1. Compute service
+    2. Event Driven
+    3. No server Management
+    4. Data source Integrations
+    5. It has support for many language run times
+5. AWS FarGate - Serverless compute Engine
+    1. Long running
+    2. Abstracts the OS
+    3. Fully managed orchestration
+    4. Fully managed cluster scaling
+6. Modernization Journey
+    1. Migration to cloud
+    2. Then App Optimizations
+7. Best Practices 
+    1. Enable Experimentations 
+    2. Componentize Application - Refer screenshot
+8. Use case - Yelm - Refer Screenshot
+
+
+====================================================================================================================================================
+
+24 - Sep - 2020 - 1st Session
+
+Building Modern Applications on AWS : Compute on AWS Confirmation
+
+1. Compute - Modern Application
+    1. EC2
+        1. Virtual server instances in the cloud
+    2. Amazon ECS, EKS, Fargate
+        1. Container management service
+    3. Amazon Lambda
+        1. Function as a service
+2. What is Serverless ?
+    1. No infrastructure to provision or manage
+    2. Automatically scales up
+    3. Pay for what you use
+3. Anatomy of a Lambda function
+    1. Your function
+    2. Language runtime
+    3. Execution environment
+    4. Compute - Is taken care by AWS
+4. Best PR
+    1. AWS clients and DB client are outside the scope of the handlers
+    2. VPC support - WARM ENI Support
+    3. Lambda Provioned concurrency 
+    4. Minimize package size
+    5. Separate the lambda handler from core logic
+    6. Use environmental value
+    7. Self contain dependencies 
+    8. Leverage max memory used to right size your functions - Avoid recursive logics
+5. Use case
+    1. Security & compliance solution
+        1. Ingestion Kinesis -  Streaming data - Difference between 1 & 2
+            1. AWS Lambda - 
+                1. Rules Engine function - Security rules and compliance  
+                    1. Alarm - Alarm will be triggered if there are any security or compliance issues
+            2. Firehouse Raw Storage  - Streaming data
+                1. S3 -Storing raw archieve
+6. Microservices  
+    1. Decoupling components 
+        1. Events are the connective tissue 
+    2. Ownership
+    3. Time to market
+7. Lamda - Should be like micro services
+    1. Event driven architecture
+8. Containers - Virtualisation  - Independent environment - Dockerized and Kubertenes platform
+    1. Management
+        1. Amazon ECS
+        2. Amazon EKS
+    2. Hosting
+        1. Amazon EC2
+        2. Amazon Fargate
+    3. Image Repository
+        1. Elastic container
+9. Containers & Microservices
+    1. Do one thing, really well
+    2. Any app, any language
+    3. Test & deploy same artifact 
+    4. Self contained services
+    5. Isolated execution environment
+    6. Faster startup - container are running in WARM containers
+    7. Scaling 
+10. How do I decide - Containers or Serverless ?
+    1. Decision tree
+        1. 
+    2. Refer screenshots
+====================================================================================================================================================
+
+30 - Sep - 2020 - 1st Session
+ Database for Modern Applicaiton
+1. Points
+    1. Scalability
+    2. Performance
+    3. Availability 
+2. Database Workloads
+    1. Shape
+        1. Row Store
+            1. Operate on a record or a group of records 
+            2. Ex - Payroll
+        2. Column Store
+            1. Aggregations, scans & Joins
+            2. Ex - Analytics
+        3. Key-Value Store
+            1. Query by key with high throughput & fast ingestion
+            2. Dictionary, Map kinda
+            3. Ex: Tracking devices
+        4. Document Store
+            1. Index & store documents for query on any property
+            2. Ex: Patient Data
+        5. Graph Store
+            1. Persist and retrieve relationships
+            2. Recommendations
+        6. Time Series store
+            1. Store and process data sequence
+            2. Process engine telementary
+        7. Unstructured Store
+    2. Size
+        1. Bounded  - Number of employees
+        2. Unbounded - Number of sensors
+        3. Working set of cache
+        4. Retrieval size
+        5. Partition-able  or monolithic 
+    3. Compute
+        1. Compute functions
+        2. Throughput 
+        3. Latency
+        4. Change rate
+        5. Rate of ingestion
+    4. Iron Triangle of Data - All about CAP
+        1. CAP Theorem - Refer screenshots
+            1. C - Consistency
+                1. All clients see same view of data
+            2. A - Availability 
+                1. All clients can always read and write
+            3. P - Partition tolerance
+                1. System works well despite physical network partitions 
+    5. Iron Triangle of Purpose - PIE Theorem - Refer screenshots
+        1. P - Pattern Flexibility  
+            1. The DB supports random access patterns and ad hoc queries 
+        2. I - Infinite Scale  - 
+        3. E - Efficiency 
+    6. Purposeful DB
+        1. Relational 
+            1. Divide data among tables - Entity 
+            2. Highly strucutred 
+
+====================================================================================================================================================
+
+1 - Oct - 2020 - 1st Session
+
+1. DEVOPS in AWS
+    1. Codecommit
+    2. Codebuild
+    3. CodeDeploy
+    4. CodePipeline
+    5. CodeStar
+    6. Cloud 9
+2. Benefits of DEVOPS - Refer Screenshot
+ 

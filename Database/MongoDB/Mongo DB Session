@@ -1,0 +1,144 @@
+Mongo DB
+
+Session 1 - 25/9/2020
+
+1. Introduction to Mongo DB
+    1. History
+        1. 2008 - 10gen company
+        2. 2013 - MongoDB
+    2. Overview
+        1. It is a document database and not a relational DB
+            1. Documents are associative arrays like
+                1. Python dictionaries
+                2. Ruby Hashes
+                3. PHP Arrays
+                4. JSON Objects
+            2. Everything in Document is KEY VALUE Pair
+2. Document Model
+    1. JSON and BSON basics
+    2. If the value is not there, key also won’t be there
+    3. Binary JSON - BSON
+        1. Mongo DB stores data as binary JSON
+    4. Documents, Collections & Databases
+        1. Documents are stored in collections
+        2. Collection are contained in a DB
+        3. Example:
+            1. Database - Products
+            2. Collection - Books, movies, music
+        4. Each DB collection combination defines namespace
+            1. products.books
+            2. products.movies
+            3. products.music
+        5. Must have _id field
+            1. It is primary key for replication
+            2. It can string or number or sub document
+            3. If it is not specified - mongoDB will create ObjectId
+            4. Restrictions 
+                1. Cannot be array
+                2. It is immutable
+                3. Unique 
+3. Mongo DB Data Types
+    1. BSON Data Types
+        1. Double
+        2. Inte
+        3. String
+        4. Boolean
+        5. Date
+        6. Binary Data
+        7. Array
+        8. ObjectId
+        9. Object
+        10. Null
+4. CRUD Operations 
+    1. Insert Command
+        1. Add one or more documents to a collection 
+        2. Creating new documents
+            1. insertOne()
+                1. Example : db.people.insertOne({“name” : “mongo”})
+                    1. Where People is the collection name
+                    2. If the collection is not there, it will be created
+                    3. If the database is not there, it will be created
+            2. InsertMany()
+                1. It is used to bulk insert using an array of documents
+                2. There are two ways to insert
+                    1. Ordered
+                    2. UnOrdered
+    2. Find Command
+        1. find() - read data from mongoDB
+        2. It returns the cursor that enables us to iterate though all documents matching a given query
+        3. Projection
+            1. Allows to select the fields that appear in the result documents
+            2. Projections will be in 0s or 1s
+            3. Example: db.movies.find(……………………..)
+            4. Syntax : db.collection.find( { <query> } , { <projection>} )
+        4. Example: 
+            1. db.people.find()
+            2. db.people.find({“name” : “mongo”})
+    3. Query Operators
+        1. Logical Query
+            1. $or
+            2. $nor
+            3. $and
+        2. Element Query
+            1. $exists
+            2. $type
+            3. $expr
+        3. Querying Arrays
+    4. Remove Command
+    5. Update Documents
+    6. Delete Documents
+        1. deleteOne()
+        2. deleteMany()
+5. Cursor
+    1. find() returns a cursor which Is a pointer to the result set
+    2. findOne() returns the document and not the cursor
+6. Developing and tuning 
+    1. Indexes
+        1. Important queries needs to be indexed
+        2. Types
+            1. Single-field
+                1. Most common index type
+            2. Compound
+                1. Helps support queries on two or more fields. 
+            3. MultiKey
+                1. Allow for arrays to be indexed by adding an index key for each element 
+            4. Text
+            5. Geospatial
+            6. Hashed
+            7. Time-to-live
+    2. explain()
+    3. B+ Tree Index
+        1. Mongo DB uses B+ tree for indexes
+        2. Hierarchical tree structure - binary search tree
+        3. It can have 
+            1. Root
+            2. Internal Nodes
+            3. leaves
+        4. Nodes can have more than 2 children
+        5. Only leaves will contain data whilst nodes will contain only keys
+        6. Data Structure optimised for reading and writing large blocks of data
+7. Replication & Sharding
+8. The Aggregation Pipeline
+9. Data design in MongoDB
+
+===================================================================================================================================================
+
+Session 2 - 28/9/2020
+
+1. Aggregation Pipeline
+    1. Aggregation operations process data records and return computed results
+    2. Replaces map
+    3. Aggregation framework is based on the concept of Pipeline
+    4. Basic Aggregation Stages
+        1. $match
+        2. $project
+        3. $sort
+        4. $group
+        5. $limit
+    5. Arrays in Aggregation 
+        1. Array Operators 
+    6. $lookup
+        1. Lookups in second collection in same database
+        2. Like left outer join
+    7. Replication 
+        1. 
