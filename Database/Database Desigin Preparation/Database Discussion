@@ -1,0 +1,27 @@
+================================ 31/8/2022=================================
+NIFI
+Ansible? Terraform? Connectors? 
+Database Migration Service (DMS), STRIIM(Delta is handled via BINLOG, OPLOG), Delta means in Database Migration??
+Debezium
+
+What happens when a query happens in DB?
+ - Query execution plan
+Database Optimizations
+- Query Optimizations
+ - Query execution plan
+- Index - Key value pair - Database go and will look in key value pair and if there are no database, it will do a full table search
+ - Keep Index - default column(id)
+ - Reads are faster, writes are slower
+ - Hint
+ - More number of Index, will slow down the data inserts, reads, updates because index also getting updated
+ - If it is Nonsequential, then it will be difficult to inserts, reads or updates - Better to have sequential as Index
+- Scaling
+ - IO - scale vertically
+- Partitioning
+ - Table Partitition - Example VIN Partition - Take last 2 digits and combination will be less, data will be partitioned and kept
+ - Database Partitition
+- Sharding
+
+Database Monitoring
+Database Shards
+Zookeeper will take care of sharing across shards

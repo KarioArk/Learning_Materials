@@ -1,0 +1,111 @@
+Java Spring Framework (Spring Framework) is a popular, open source, enterprise-level framework for creating standalone, production-grade applications that run on the Java Virtual Machine (JVM).
+
+Java Spring Boot (Spring Boot) is a tool that makes developing web application and microservices with Spring Framework faster and easier through three core capabilities:
+
+	Autoconfiguration
+	An opinionated approach to configuration
+	The ability to create standalone applications
+	These features work together to provide you with a tool that allows you to set up a Spring-based application with minimal configuration and setup.
+
+Why is Spring Framework so popular?
+
+	Spring Framework offers a dependency injection feature that lets objects define their own dependencies that the Spring container later injects into them. This enables developers to create modular applications consisting of loosely coupled components that are ideal for microservices and distributed network applications.
+
+	Spring Framework also offers built-in support for typical tasks that an application needs to perform, such as data binding, type conversion, validation, exception handling, resource and event management, internationalization, and more. 
+
+What Spring Boot adds to Spring Framework?
+
+	As capable and comprehensive as Spring Framework is, it still requires significant time and knowledge to configure, set up, and deploy Spring applications. Spring Boot mitigates this effort with three important capabilities.
+
+Autoconfiguration
+	Autoconfiguration means that applications are initialized with pre-set dependencies that you don't have to configure manually. As Java Spring Boot comes with built-in autoconfiguration capabilities, it automatically configures both the underlying Spring Framework and third-party packages based on your settings (and based on best practices, which helps avoid errors). Even though you can override these defaults once the initialization is complete, Java Spring Boot's autoconfiguration feature enables you to start developing your Spring-based applications fast and reduces the possibility of human errors.
+
+Opinionated approach
+	Spring Boot uses an opinionated approach to adding and configuring starter dependencies, based on the needs of your project. Following its own judgment, Spring Boot chooses which packages to install and which default values to use, rather than requiring you to make all those decisions yourself and set up everything manually.
+
+	You can define the needs of your project during the initialization process, during which you choose among multiple starter dependencies—called Spring Starters—that cover typical use cases. You run Spring Boot Initializr by filling out a simple web form, without any coding.
+
+	For example, the ‘Spring Web’ starter dependency allows you to build Spring-based web applications with minimal configuration by adding all the necessary dependencies—such as the Apache Tomcat web server—to your project. ‘Spring Security’ is another popular starter dependency that automatically adds authentication and access-control features to your application.
+
+	Spring Boot includes over 50 Spring Starters, and many more third-party starters are available.
+
+Standalone applications
+	Spring Boot helps developers create applications that just run. Specifically, it lets you create standalone applications that run on their own, without relying on an external web server, by embedding a web server such as Tomcat or Netty into your app during the initialization process. As a result, you can launch your application on any platform by simply hitting the Run command. (You can opt out of this feature to build applications without an embedded Web server.)
+
+
+Spring Boot Architecture
+
+	Spring Boot follows a layered architecture in which each layer communicates with the layer directly below or above (hierarchical structure) it.
+
+	Before understanding the Spring Boot Architecture, we must know the different layers and classes present in it. There are four layers in Spring Boot are as follows:
+
+
+
+Spring Boot Application - @SpringBootApplication
+	Used in the main class or bootstrap class and a single annotation is used to enable Auto configuration, component scan and do a extra configuration on the application class.
+
+Auto Configuration - @EnableAutoConfiguration - 
+	Spring Boot Auto configuration automatically configures your spring application based on the JAR dependencies added in your project.
+	For Example : if MySQL DB is in your class path, then spring boot auto configures an in-memory database.
+
+Component Scan - @ComponentScan
+	It scans all the beans and package declarations when the application initializes
+
+SpringBootConfiguration - @SpringBootConfiguration
+	Configuration – @Configuration  
+	Allow to register extra beans in the context or import additional configuration classes
+
+Request Mapping - @RequestMapping
+	This annotation maps HTTP requests to handler methods of MVC and REST controllers.
+	It can be applied to class-level and/or method-level in a controller.
+
+Componet- @Componet
+	A Java class decorated with @Component is found during classpath scanning and registered in the context as a Spring bean.
+	@Service, @Repository, and @Controller are specializations of @Component, which are used for more specific cases.
+
+
+REST
+
+	REST has quickly become the de-facto standard for building web services on the web because they’re easy to build and easy to consume.
+
+	There’s a much larger discussion to be had about how REST fits in the world of microservices, but — for this tutorial — let’s just look at building RESTful services.
+
+	Why REST? REST embraces the precepts of the web, including its architecture, benefits, and everything else.
+
+	What benefits? The web and its core protocol, HTTP, provide a stack of features:
+
+		Suitable actions (GET, POST, PUT, DELETE, …​)
+
+		Caching
+
+		Redirection and forwarding
+
+		Security (encryption and authentication)
+
+		These are all critical factors on building resilient services. But that is not all. The web is built out of lots of tiny specs, hence it’s been able to evolve easily, without getting bogged down in "standards wars".
+
+Developers are able to draw upon 3rd party toolkits that implement these diverse specs and instantly have both client and server technology at their fingertips.
+
+By building on top of HTTP, REST APIs provide the means to build:
+
+	Backwards compatible APIs
+
+	Evolvable APIs
+
+	Scaleable services
+
+	Securable services
+
+	A spectrum of stateless to stateful services
+
+Advantages of Spring Boot
+
+	It creates stand-alone Spring applications that can be started using Java -jar.
+	It tests web applications easily with the help of different Embedded HTTP servers such as Tomcat, Jetty, etc. We don't need to deploy WAR files.
+	It provides opinionated 'starter' POMs to simplify our configuration.
+	It provides production-ready features such as metrics, health checks, and externalized configuration.
+	There is no requirement for XML configuration.
+	It offers a CLI tool for developing and testing the Spring Boot application.
+	It offers the number of plug-ins.
+	It also minimizes writing multiple boilerplate codes (the code that has to be included in many places with little or no alteration), XML configuration, and annotations.
+	It increases productivity and reduces development time.

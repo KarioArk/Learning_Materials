@@ -1,0 +1,58 @@
+System Design  - Using GCP
+
+Use case - 
+	Book store search - we need to get the list of books based on Popularity
+
+
+Data Structures used
+TRIE
+Least Recently Used (LRU) is a common caching strategy.
+
+Architecture Design Terms - https://www.ibm.com/cloud/blog/four-architecture-choices-for-application-development
+
+- Scalibilty 
+- Reliability
+- Availability
+- Serviceability
+
+
+What to be done?
+Parts of System Design
+
+CDR - ??
+
+System Design Layer
+- Frontend -> GCS, NGINX, Google Kubernetes Engine(GKE), Cloud Run, Google App Engine - Learn about Frontend Patterns, MicroFE, Headless Architecture, SSR, Modular Feduration to achieve MicroFrontEnd
+- BE -> Google Kubernetes Engine(GKE), Cloud Run, Google App Engine
+- DB - It should be ACID properties (Atomicity, Consistency, Isolation, Durability)  
+
+SQL and No SQL - (Search about NewSQL - looks like Couchbase is NewSQL)
+
+SQL
+- OLTP - Online transaction processing (OLTP) captures, stores, and processes data from transactions in real time.
+
+Example: 
+
+	MySQL
+	Oracle
+	PostgreSQL
+	Microsoft SQL Server
+	MariaDB
+	IBM Db2
+	Amazon Aurora
+	Google Cloud Spanner
+
+- OLAP - Online analytical processing (OLAP) uses complex queries to analyze aggregated historical data from OLTP systems.
+
+Example: 
+
+	Teradata
+	BigQuery
+	AWS Redshift
+
+- ETL - the force that joins OLTP and OLAP - The data from one or more OLTP databases is ingested into OLAP systems through a 				process called extract, transform, load (ETL). 
+		
+		With an ETL tool, users can collect data from several sources and send it to a destination, such as an OLAP data warehouse, where it is queried by analytics and business intelligence tools for insights.
+
+
+- Scaling - Load Balancer - Don't think too much about scaling at first - Generally don't scale any layers

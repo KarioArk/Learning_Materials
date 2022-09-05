@@ -1,0 +1,37 @@
+Google Cloud Platform - Fundamentals Core Infrastructure
+Compute
+	- Compute Engine
+	- Kubernetes Engine
+	- App Engine
+		- Deploy backend and mobile apps
+	- Cloud Functions
+Storage
+	- BigTable
+	- Cloud Storage
+		- Google cloud blob storage(file storage in cloud), unstructured(images, files)
+	- Cloud SQL
+	- Cloud Spanner
+	- Cloud Datastore
+Networking
+Big Data
+	- Big Query
+	- Pub/Sub
+	- Data flow
+	- Data proc
+	- Data lab
+Machine Learning
+	- Natural Lanugauge API
+	- Vision API
+	- Transalte API
+	- Speech API
+	- Machine Learning
+
+Gamified Login details - 
+	https://google.qwiklabs.com/games/1690
+	ch2-ra-fordinfra-048
+
+gcloud app deploy
+control access to object - fine grained
+
+
+Include Agile Coaches Dhaval and all

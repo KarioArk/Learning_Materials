@@ -1,0 +1,14 @@
+Questions
+1. GKE vs CR
+2. API Driven - Pros of API First
+3. Migration 
+	- (URL)APIs stays the same - Happens in Load Balance but we used for Switch over(APIGEE to APIM or APIM to APIGEE(Fallback))
+	- Wave 0 - Impacted applications, take the important take ways
+	- Formed the technical team for GCP
+	- Component to Component
+	- Database Migration - 0 Downtime or No Downtime - How did you achieve it ?
+4. One project where this you are proud of
+5. Most Challenging part
+6. Failure project - How do you recover from Failure?
+	- China example - Binary - data slow - Follow STAR Patter
+7. What is Multi tenant? How it is working in Infra level, application level, database level
