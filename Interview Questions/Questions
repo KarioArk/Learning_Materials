@@ -1,5 +1,5 @@
 Questions
-1. GKE vs CR
+1. GKE vs Cloud Run
 2. API Driven - Pros of API First
 3. Migration 
 	- (URL)APIs stays the same - Happens in Load Balance but we used for Switch over(APIGEE to APIM or APIM to APIGEE(Fallback))
